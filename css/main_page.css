@@ -1,0 +1,47 @@
+body{
+    text-align: center;
+
+}
+
+.main_user_block{
+    max-width: 500px;
+    background: white;
+    padding: 10px;
+    border-style: groove;
+    color: #cfcfd1;
+    width: 20%;
+    height: 30%;
+    text-align: center;
+    display: inline-block;
+    margin:auto;
+    border-radius: 5px;
+}
+#portal{
+  font-size:300%;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+#user{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+
+}
+#admin{
+  position: fixed;
+  top: 50%;
+  left: 25%;
+}
+
+.login_button{
+  background-color: #c3c6cc; /* white */
+  border: none;
+  border-radius: 5px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  padding: 15px;
+}

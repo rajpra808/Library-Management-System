@@ -1,0 +1,159 @@
+body{
+    background: #D0CFCE;
+  }
+  .image_user{
+    float: right;
+    padding-right: 5%;
+  }
+  
+  .heading{
+    position: relative;
+    display: inline-block;
+    text-align: center;
+  }
+  .main_header{
+    text-align: center;
+  }
+  
+  .main_user_block{
+      max-width: 1000px;
+      background: white;
+      padding: 10px;
+      border-style: dotted;
+      color: #cfcfd1;
+      width: 50%;
+      height: 50%;
+      text-align: center;
+      display: inline-block;
+      margin:auto;
+      border-radius: 5px;
+  }
+  #portal{
+    font-size:300%;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+  }
+  #Result{
+    position: fixed;
+    top: 40%;
+    left: 25%;
+  }
+  
+  #log_button {
+    width: 85px;
+    background-color: #4CAF50;
+  }
+  
+  .BUTTON{
+    font-size: 15px;
+    color: black;
+    padding: 15px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  
+
+
+  #book-form {
+    display: grid;
+    padding: 1em;
+    background: #f9f9f9;
+    border: none;
+    margin: 2rem auto 0 auto;
+    max-width: 600px;
+    padding: 1em;
+    box-shadow: -1px 1px 35px 7px rgba(94,94,94,0.4);
+  }
+  h1 {
+    text-align: center;
+  }
+  p {
+    grid-column: 2;
+  }
+  form input {
+    background: #fff;
+    border: 1px solid #9c9c9c;
+  }
+  form button {
+    background: lightgrey;
+    padding: 0.7em;
+    width: 100%;
+    border: 0;
+  }
+  form button:hover {
+    background: black;
+    cursor: pointer;
+    color: white;
+  }
+  
+  
+  label {
+    padding: 0.5em 0.5em 0.5em 0;
+  }
+  
+  input {
+    padding: 0.7em;
+    margin-bottom: 0.5rem;
+  }
+  input:focus {
+    outline: 3px solid black;
+  }
+  fieldset{
+    grid-column: 2 / 2;
+  }
+  textarea {
+    grid-column: 2 / 2;
+    height: 100px;
+  }
+  
+  @media (min-width: 400px) {
+    form {
+      grid-template-columns: 200px 1fr;
+      grid-gap: 16px;
+    }
+  
+    label {
+      text-align: right;
+      grid-column: 1 / 2;
+    }
+  
+    select {    
+      background: #ffff;
+      border: 1px solid #9c9c9c;
+      grid-column: 2/2;
+    }
+  
+    input,
+    button {
+      grid-column: 2 / 3;
+    }
+    .upload-btn-wrapper {
+        position: relative;
+        overflow: hidden;
+        display: inline-block;
+      }
+      
+    .btn {
+    border: 2px solid gray;
+    color: gray;
+    background-color: white;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: bold;
+    }
+
+    .upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    }
+
+  }
+  
+
+

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="css/usr_login.css"/>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/usr_login.js"></script>
+    <script type="text/javascript" src="js/user_login.js"></script>
+    <title>Online Library Portal</title>
+  </head>
+
+  <body>
+    <h1 id="portal">Online Library Portal</h1>
+    <hr>
+    
+    <button id="back_button" onclick="location.href='main_page.html'">Back</button>
+
+    <div class="login-page">
+          <div class="form">
+            <hr>
+            <h3>User Authentication</h3>
+            <hr>
+            <br>
+            <form class="register-form">
+              <input type="text" placeholder="name" id="usr_name"/>
+              <input type="password" placeholder="password" id="usr_pass" required/>
+              <input type="text" placeholder="Roll Number" id = "usr_roll" required/>
+              <input type="date" placeholder="dd/mm/yyyy" id = "usr_dob" required/>
+              <input type="email" placeholder="email address" id = "usr_email" required/>
+              <button id="register_new">SIGNUP</button>
+              <p class="message">Already registered? <a href="#">Sign In</a></p>
+            </form>
+
+            <form class="login-form">
+              <input type="text" placeholder="username" id = "username" required/>
+              <input type="password" placeholder="password" id = "password" required/>
+              <button type="submit" id ="log_me_in" >LOGIN</button>
+              <p class="message">Not registered? <a href="#">Create an account</a></p>
+            </form>
+
+          </div>
+    </div>
+ 
+ 
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+ <script defer src="https://www.gstatic.com/firebasejs/6.0.2/firebase-auth.js"></script> 
+
+
+  </body>
+</html>

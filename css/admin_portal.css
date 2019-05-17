@@ -1,0 +1,113 @@
+body{
+  background: #D0CFCE;
+}
+.image_user{
+  float: right;
+  padding-right: 5%;
+}
+
+.heading{
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+.main_header{
+  text-align: center;
+}
+
+.main_user_block{
+    max-width: 1000px;
+    background: white;
+    padding: 10px;
+    border-style: dotted;
+    color: #cfcfd1;
+    width: 50%;
+    height: 50%;
+    text-align: center;
+    display: inline-block;
+    margin:auto;
+    border-radius: 5px;
+}
+#portal{
+  font-size:300%;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+#Result{
+  position: fixed;
+  top: 40%;
+  left: 25%;
+  color:black;
+  overflow-x: hidden; 
+  overflow-x: auto; 
+  text-align:justify; 
+}
+.Search{
+  position: fixed;
+  width: 20%;
+  display: block;
+  margin: 0 auto;
+}
+
+#Students_search{
+  top:32%;
+  left:25%;
+}
+#Books_search{
+  top:32%;
+  left:55%;
+}
+
+input#search-bar{
+  margin: 0 auto;
+  width: 80%;
+  height: 25px;
+  padding: 0 20px;
+  font-size: 1rem;
+  border: 1px solid #D0CFCE;
+  outline: none;
+ }
+
+.search-icon{
+  position: relative;
+  float: right;
+  width: 50px;
+  height: 50px;
+  top: -37px;
+
+}
+
+
+#log_button {
+  width: 85px;
+  background-color: #4CAF50;
+}
+
+.BUTTON{
+  font-size: 15px;
+  color: black;
+  padding: 15px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+#add_book_button{
+  border: ridge;
+  margin-left: 7%;
+  margin-top: 8%;
+  width: 12%;
+}
+#buy_book{
+  width: 12%;
+  border: ridge;
+  margin-left: 7%;
+  margin-top: 5%;
+}
+
+
+ul{
+  padding-left: 10px;
+  padding-right: 10px;
+}
