@@ -88,7 +88,7 @@ $(document).ready(function() {
     });
     firebase.auth().onAuthStateChanged(user => {
         if(!user) {
-            window.location = 'main_page.html';
+            window.location = 'index.html';
             }
     });
 
