@@ -19,6 +19,12 @@
 
 4. for user account register a new user
 ---
+
+# direct link 
+
+https://rajpra786.github.io/Library-Management-System/index.html
+
+---
 # Contributors
 - ##### Rajendra Prajapat
 - ##### Dheeraj Chaudhary
