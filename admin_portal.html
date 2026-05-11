@@ -1,74 +1,380 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="css/admin_portal.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script type="text/javascript" src="js/admin_portal.js">
-    </script>
-    <title>Library Management System</title>
-  </head>
-  <body>
-    <!-- logout button -->
-    <div >
-      <button class="BUTTON" id="log_button">LogOut</button>
-    </div>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library Management System - Admin Portal</title>
+  <link rel="stylesheet" href="css/admin_portal.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="js/admin_portal.js"></script>
+  <style>
 
-    <div class=main_header>
-      <div class="image_user">
-        <!-- user image -->
-        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-        width="75" height="75"
-        viewBox="0 0 192 192"
-        style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,192v-192h192v192z" fill="none"></path><path d="M96,192c-53.01934,0 -96,-42.98066 -96,-96v0c0,-53.01934 42.98066,-96 96,-96v0c53.01934,0 96,42.98066 96,96v0c0,53.01934 -42.98066,96 -96,96z" fill="#cccccc"></path><g fill="#666666"><g id="surface1"><path d="M96,40.32c-15.38812,0 -27.84,12.45188 -27.84,27.84c0,15.38813 12.45188,27.84 27.84,27.84c15.38813,0 27.84,-12.45187 27.84,-27.84c0,-15.38812 -12.45187,-27.84 -27.84,-27.84zM75.3375,105.7875c-26.29031,7.96594 -35.0175,29.58 -35.0175,29.58v16.3125h111.36v-16.3125c0,0 -8.72719,-21.61406 -35.0175,-29.58c-1.44094,10.14094 -10.14094,18.0525 -20.6625,18.0525c-10.52156,0 -19.22156,-7.91156 -20.6625,-18.0525z"></path></g></g></g></svg>
-        <h4>My Profile</h4>
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f4f8;
+  padding: 20px;
+  line-height: 1.5;
+  color: #333;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.admin-header .admin-profile svg {
+  width: 60px;
+  height: 60px;
+  margin-right: 10px;
+}
+
+.admin-header .admin-profile h4 {
+  font-size: 18px;
+}
+
+.admin-header .heading h1 {
+  font-size: 32px;
+  font-weight: bold;
+  color: #2e3b4e;
+}
+
+.logout-btn {
+  background-color: #e44d44;
+  color: white;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background-color: #d32f2f;
+}
+
+.search-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.search-box {
+  display: flex;
+  width: 45%;
+}
+
+.search-box form {
+  display: flex;
+  width: 100%;
+  border-radius: 25px;
+  border: 1px solid #ccc;
+}
+
+.search-box input {
+  padding: 10px;
+  border: none;
+  width: 80%;
+  border-radius: 25px 0 0 25px;
+}
+
+.search-box button {
+  padding: 10px;
+  border: none;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 0 25px 25px 0;
+  cursor: pointer;
+}
+
+.search-box button:hover {
+  background-color: #45a049;
+}
+
+.main-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.list-container {
+  width: 48%;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.list-container h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #2e3b4e;
+}
+
+#users, #books {
+  list-style: none;
+  padding: 0;
+}
+
+.actions-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.actions-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.actions-container .btn:hover {
+  background-color: #45a049;
+}
+
+.delete-section, .delete-user-section {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.delete-section input {
+  padding: 10px;
+  width: 250px;
+  margin-right: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.delete-btn {
+  background-color: #f44336;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background-color: #e53935;
+}
+
+.remove-btn {
+  background-color: #f44336;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.remove-btn:hover {
+  background-color: #e53935;
+}
+
+input#search-bar {
+  height: 100%;
+  background-color: unset;
+  border: none;
+}
+
+.admin-header
+{
+  text-align: center;
+  flex: 1;
+}
+
+#log_button{
+  width: 100px;
+}
+  </style>
+</head>
+<body>
+
+  <!-- Admin Header -->
+  <header>
+    <div class="admin-header">
+      <div class="admin-profile">
+        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="75" height="75" viewBox="0 0 192 192" style="fill:#cccccc;">
+          <path d="M96,40.32c-15.38812,0 -27.84,12.45188 -27.84,27.84c0,15.38813 12.45188,27.84 27.84,27.84c15.38813,0 27.84,-12.45187 27.84,-27.84c0,-15.38812 -12.45187,-27.84 -27.84,-27.84z"></path>
+        </svg>
+        <h4>Admin Profile</h4>
       </div>
-
       <div class="heading">
-              <h1 id="portal">Online Library (Admin) Portal</h1>
+        <h1>Online Library Admin Portal</h1>
       </div>
-
+      <button class="btn logout-btn" id="log_button">LogOut</button>
     </div>
+  </header>
 
-    <hr>
-    <!-- admin login -->
-
-
-    <!-- search -->
-
-    <form class="Search" id="Students_search">
-      <input type="text" id="search-bar" placeholder="Search Students">
-      <a href="#"><img class="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"></a>
-      <button id="show_students">Show all Students</button>
-    </form>
-
-    <form class="Search" id="Books_search">
-      <input type="text" id="search-bar" placeholder="Search Books">
-      <a href="#"><img class="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"></a>
-      <button id="show_books">Show all Books</button>
-    </form>
-
-
-    <div>
-      <!-- big box -->
-      <div class="main_user_block" id="Result">  
-        <ul id="users">
-        </ul>
-        <ul id="books">
-        </ul>
-      </div>  
-      <div>
-          <button class="BUTTON" id="add_book_button" onclick="location.href='add_book.html'">Add Books</button>
+  <main>
+    <section class="search-container">
+      <div class="search-box">
+        <form id="Students_search">
+          <input type="text" id="search-bar" placeholder="Search Students">
+          <button id="show_students" type="submit"><img class="search-icon" style="top: -3px;" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"></button>
+        </form>
       </div>
-
-      <div>
-          <button class="BUTTON" id="buy_book" onclick="location.href='buy_book.html'">Buy Books</button>
+      <div class="search-box">
+        <form id="Books_search">
+          <input type="text" id="search-bar" placeholder="Search Books">
+          <button id="show_books" type="submit"><img class="search-icon" style="top: -3px;" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"></button>
+        </form>
       </div>
-    </div>
+    </section>
 
-    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
-    <script defer src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
-    <script defer src="https://www.gstatic.com/firebasejs/6.0.2/firebase-auth.js"></script>
-  </body>
+    <section class="main-container">
+      <div class="list-container">
+        <h3>Students</h3>
+        <ul id="users"></ul>
+      </div>
+      <div class="list-container">
+        <h3>Books</h3>
+        <ul id="books"></ul>
+      </div>
+    </section>
+
+    <section class="actions-container">
+      <button class="btn add-btn" id="add_book_button" onclick="location.href='add_book.html'">Add Books</button>
+      <button class="btn update-btn" id="add_book_button" onclick="location.href='add_book.html'">Update Book</button>
+      <button class="btn buy-btn" id="buy_book" onclick="location.href='buy_book.html'">Buy Books</button>
+    </section>
+
+    <section class="delete-section">
+      <!-- <label for="delete_book_code">Enter Book Code to Delete:</label><br> -->
+      <input type="text" id="delete_book_code" placeholder="Enter Book Code to Delete:"><br><br>
+      <button class="btn delete-btn" id="delete-button">Delete Book</button>
+
+      <input style="margin-left: 50px;" type="text" id="roll_number" placeholder="Enter Roll Number to delete user:"><br><br>
+      <button class="btn delete-btn" onclick="deleteUserAccount(document.getElementById('roll_number').value)">Delete User</button>
+  
+    </section>
+
+    <!-- <section class="delete-user-section delete-section"> -->
+      <!-- <button class="btn remove-btn" onclick="location.href='delete_user.html'">Remove Students</button> -->
+      <!-- <label for="roll_number">Enter Roll Number to delete user:</label> -->
+      <!-- <input type="text" id="roll_number" placeholder="Enter Roll Number to delete user:"><br><br>
+      <button class="btn delete-btn" onclick="deleteUserAccount(document.getElementById('roll_number').value)">Delete User</button>
+  
+    </section> -->
+  </main>
+
+  <!-- Firebase Scripts -->
+  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/6.0.2/firebase-auth.js"></script>
+
+  <script>
+    $(document).ready(function() {
+      var firebaseConfig = {
+        apiKey: "AIzaSyBA2O5kze6cSrMqrUpDYoP5KZepBsNEa4k",
+        authDomain: "library-management-syste-37dc2.firebaseapp.com",
+        databaseURL: "https://library-management-syste-37dc2-default-rtdb.firebaseio.com",
+        projectId: "library-management-syste-37dc2",
+        storageBucket: "library-management-syste-37dc2.firebasestorage.app",
+        messagingSenderId: "962676782645",
+        appId: "1:962676782645:web:c008daf774bcee5a80e37c",
+        measurementId: "G-NZ9VJF0LJ2"
+      };
+
+      if (!firebase.apps.length) {
+        firebase.initializeApp(firebaseConfig);
+      } else {
+        firebase.app();
+      }
+
+      var db = firebase.firestore();
+
+      // Deleting the book based on the entered Book Code
+      $('#delete-button').click(function() {
+        var deleteBookCode = $('#delete_book_code').val().trim();
+
+        if (deleteBookCode === "") {
+          alert("Please enter a Book Code.");
+          return;
+        }
+
+        db.collection("books").doc(deleteBookCode).delete()
+          .then(() => {
+            alert("Book successfully deleted!");
+            console.log("Book deleted successfully!");
+            $('#delete_book_code').val('');
+          })
+          .catch((error) => {
+            alert("Error deleting document: " + error);
+            console.error("Error deleting document: ", error);
+          });
+      });
+
+      firebase.auth().onAuthStateChanged(user => {
+        if (!user) {
+          window.location = 'index.html';
+        }
+      });
+    });
+  </script>
+
+
+<script type="module">
+  // Firebase SDK imports
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+  import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+  import { getFirestore, doc, deleteDoc, getDoc } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+
+  // Firebase configuration
+  const firebaseConfig = {
+      apiKey: "AIzaSyBA2O5kze6cSrMqrUpDYoP5KZepBsNEa4k",
+      authDomain: "library-management-syste-37dc2.firebaseapp.com",
+      databaseURL: "https://library-management-syste-37dc2-default-rtdb.firebaseio.com",
+      projectId: "library-management-syste-37dc2",
+      storageBucket: "library-management-syste-37dc2.firebasestorage.app",
+      messagingSenderId: "962676782645",
+      appId: "1:962676782645:web:c008daf774bcee5a80e37c",
+      measurementId: "G-NZ9VJF0LJ2"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+  // Admin Delete User Function (Firestore only, no Firebase Authentication deletion here)
+  async function deleteUserAccount(rollNumber) {
+      try {
+          // Check if the user exists in Firestore
+          const userRef = doc(db, "users", rollNumber);
+          const userDoc = await getDoc(userRef);
+
+          if (!userDoc.exists()) {
+              alert("User not found in Firestore!");
+              return;
+          }
+
+          // Delete the user data from Firestore
+          await deleteDoc(userRef);
+          console.log("User successfully deleted from Firestore!");
+
+          alert("User data deleted successfully from Firestore!");
+      } catch (error) {
+          console.error("Error deleting user data from Firestore: ", error);
+          alert("Error deleting user: " + error.message);
+      }
+  }
+
+  // Make the function accessible globally
+  window.deleteUserAccount = deleteUserAccount;
+</script>
+
+</body>
 </html>
